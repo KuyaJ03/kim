@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Medal - Kim Marupok</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+
+        .medal-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+        }
+
+        .medal {
+            font-size: 100px;
+            display: inline-block;
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.2; color: red; }
+            50% { transform: scale(1.2); color: blue; }
+            100% { transform: scale(1); opacity: 1; color: orange; }
+        }
+
+        .name {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .popping-text {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 30px;
+            color: red;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            animation: popTextAnimation 2s infinite;
+        }
+
+        @keyframes popTextAnimation {
+            0% { opacity: 0; transform: scale(1); color: red; }
+            50% { opacity: 1; transform: scale(1.2); color: yellow; }
+            100% { opacity: 0; transform: scale(1); color: red; }
+        }
+
+    </style>
+</head>
+<body onload="startAnimation()">
+    <h1>🏆 Congratulations! 🏆</h1>
+
+    <div class="medal-container">
+        <div class="medal">🥇</div>
+    </div>
+
+    <div class="name">Kim Marupok</div>
+
+    <p class="popping-text" id="popup-text">Geh biyaan para mag inom 🍺</p>
+
+    <script>
+        function launchConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.6 }
+            });
+        }
+
+        function animateText() {
+            let popupText = document.getElementById("popup-text");
+            popupText.style.opacity = (popup-text.style.opacity === "1") ? "0" : "1";
+        }
+
+        function startAnimation() {
+            setInterval(launchConfetti, 2000);  // Launch confetti every 2s
+            setInterval(animateText, 2000); // Make text appear/disappear
+        }
+
+        function animateText() {
+            let text = document.getElementById("popup-text");
+            text.style.opacity = (text.style.opacity === "1") ? "0" : "1";
+        }
+    </script>
+</body>
+</html>
